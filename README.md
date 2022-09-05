@@ -1,4 +1,4 @@
-# 29cm Brand Commentary 기획 전략
+# 29cm Brand Commentary 기획을 위한 카테고리 & 브랜드 분석
 
 ### 주제 선정
 - 주제 : 29cm 브랜드 코멘터리 컨텐츠 기획을 위한 카테고리 & 브랜드 분석 </br>
