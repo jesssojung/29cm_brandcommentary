@@ -2,13 +2,13 @@ SELECT click.w -- 주
  		 , click.ct1_name -- 카테고리 대분류
 		 , click.ct2_name -- 카테고리 중분류
 		 , click.brd_name -- 브랜드
-         , brd_gmv -- 매출
+         , brd_gmv -- 주차별 브랜드 매출
          , ct2_cnt_pct -- 카테고리 중분류 브랜드 개수, 태블로 조회 시 필터에 중분류 및 주차 필수
          , ct2_gmv_pct -- 카테고리 중분류 브랜드 매출, 태블로 조회 시 내림차순 필터에 중분류 및 주차 필수 
-         , brd_p_user_cnt -- 구매유저수
-         , brd_c_user_cnt -- 클릭유저수
-         , brd_p_user_cnt / brd_c_user_cnt cv -- 구매 전환율 (대체 지표)
-         , SUM(brd_gmv) OVER(PARTITION BY w, ct2_name, brd_name) / SUM(gmv.brd_gmv) OVER(PARTITION BY gmv.w, ct2_name) brd_pct -- 중분류 내 브랜드 매출 비중
+         , brd_p_user_cnt -- 주차별 브랜드 구매유저수
+         , brd_c_user_cnt -- 주차별 브랜드 클릭 유저수
+         , brd_p_user_cnt / brd_c_user_cnt cv -- 주차별 브랜드 구매 전환율 (대체 지표)
+         , SUM(brd_gmv) OVER(PARTITION BY w, ct2_name, brd_name) / SUM(gmv.brd_gmv) OVER(PARTITION BY gmv.w, ct2_name) brd_pct -- 주차별 중분류 내 브랜드 매출 비중
 FROM
              ( -- 주단위 click event 테이블
              SELECT CASE WHEN DATE_FORMAT(event_timestamp, "%Y-%m-%d") BETWEEN '2021-06-03' AND '2021-06-09' THEN '2021-06-03'
